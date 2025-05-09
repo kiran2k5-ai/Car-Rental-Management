@@ -3,11 +3,11 @@
 // Start the session
 // session_start();
 
-// // Check if user is logged in, if not redirect to login page
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");
-//     exit();
-// }
+// Check if user is logged in, if not redirect to login page
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 // Database connection
 $servername = "localhost";
@@ -23,8 +23,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get user information
-// $user_id = $_SESSION['user_id'];
+
+$user_id = $_SESSION['user_id'];
 $user_query = "SELECT * FROM users WHERE id = ?";
 $stmt = $conn->prepare($user_query);
 $stmt->bind_param("i", $user_id);
