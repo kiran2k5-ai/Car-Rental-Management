@@ -1,94 +1,99 @@
+<?php
+// This is your header.php file
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Car Rental System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet" />
-  <style>
-    /* Basic global styles */
-    body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Car Rental</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have a styles.css file -->
+    <style>
+        /* Header Styles */
+        header {
+            background-color: #000000; /* Black background */
+            padding: 20px 0;
+        }
 
-.container {
-    flex: 1;
-}
+        nav {
+            display: flex;
+            justify-content: flex-end; /* Align the navigation to the right */
+            align-items: center;
+            padding: 0 20px;
+        }
 
-footer {
-    background-color: #212529;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto;
-}
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            color: #FFD700; /* Gold */
+            font-weight: bold;
+            position: absolute;
+            left: 20px; /* Position logo on the left */
+        }
 
-    body {
-      margin: 0;
-      background: #f5f7fa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-    }
+        .logo span {
+            color: #FFFFFF; /* White */
+        }
 
-    a {
-      color: #007bff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #0056b3;
-    }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
 
-    /* Navbar styling */
-    nav {
-      background-color: #007bff;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .nav-links a {
+            color: #FFFFFF; /* White text */
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-    nav .logo {
-      color: white;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-    }
+        .nav-links a:hover {
+            background-color: #FFD700; /* Gold background on hover */
+            color: #000000; /* Black text on hover */
+            border-radius: 5px;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
+        .cta-button {
+            background-color: #FFD700; /* Gold */
+            color: #000000; /* Black text */
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
 
-    nav ul li a {
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-      text-decoration: underline;
-    }
-  </style>
+        .cta-button:hover {
+            background-color: #000000; /* Black on hover */
+            color: #FFD700; /* Gold text on hover */
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+    </style>
 </head>
 <body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">
+                Luxury <span>Cars</span>
+            </div>
 
-<nav>
-  <div class="logo">Car Rental System</div>
-  <ul>
-    <li><a href="index.php" class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">Home</a></li>
-    <li><a href="login.php" class="<?= basename($_SERVER['PHP_SELF']) == 'login.php' ? 'active' : '' ?>">Login</a></li>
-    <li><a href="register.php" class="<?= basename($_SERVER['PHP_SELF']) == 'register.php' ? 'active' : '' ?>">Register</a></li>
-    <li><a href="available_cars.php" class="<?= basename($_SERVER['PHP_SELF']) == 'available_cars.php' ? 'active' : '' ?>">Available Cars</a></li>
-    <li><a href="../logout.php" class="<?= basename($_SERVER['PHP_SELF']) == 'logout.php' ? 'active' : '' ?>">Logout</a></li>
-  </ul>
-</nav>
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Fleet</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <!-- Call to Action Button -->
+            <a href="#" class="cta-button">Book Now</a>
+        </nav>
+    </header>
+
+</body>
+</html>
