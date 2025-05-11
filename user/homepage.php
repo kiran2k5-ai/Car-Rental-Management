@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Car Rental</title>
     <style>
-        /* Reset and Base Styles */
         body {
             margin: 0;
             padding: 0;
@@ -16,7 +15,6 @@
             color: #333;
         }
 
-        /* Car Gallery */
         .car-gallery {
             padding: 50px 20px;
             background-color: #fff;
@@ -29,6 +27,64 @@
             color: #222;
         }
 
+        /* Combined Grid Box */
+        .grid-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            background-color: #000;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            color: white;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #FFD700;
+        }
+
+        .booking-form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .booking-form input {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+
+        .booking-form input[type="submit"] {
+            background-color: #FFD700;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .booking-form input[type="submit"]:hover {
+            background-color: #e6c200;
+        }
+
+        /* 3D Car Model Display */
+        .rotating-car-box {
+            text-align: center;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 400px;
+            background-color: #000;
+            border-radius: 10px;
+        }
+
+        /* Car Cards */
         .car-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -44,7 +100,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             max-width: 350px;
             position: relative;
-            perspective: 1000px;
         }
 
         .car-card:hover {
@@ -55,20 +110,13 @@
         .car-image-wrapper {
             width: 100%;
             height: 200px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
         }
 
-        .car-image-wrapper:hover {
-            transform: rotateY(20deg); /* 3D effect when hovering */
-        }
-
-        .car-image img {
+        .car-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 10px 10px 0 0;
         }
 
         .car-info {
@@ -101,57 +149,6 @@
         .book-now:hover {
             background-color: #e6c200;
         }
-
-        /* Booking Form Section (Grid Box) */
-        .booking-form {
-            background-color: #000;
-            padding: 30px;
-            margin: 20px 0;
-            color: #fff;
-            border-radius: 10px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* Added shadow effect */
-        }
-
-        .booking-form input, .booking-form select {
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .booking-form input[type="submit"] {
-            background-color: #FFD700;
-            color: #000;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .booking-form input[type="submit"]:hover {
-            background-color: #e6c200;
-        }
-
-        /* Car Rotating Animation */
-        @keyframes rotateCar {
-            0% {
-                transform: rotateY(0deg);
-            }
-            50% {
-                transform: rotateY(180deg);
-            }
-            100% {
-                transform: rotateY(360deg);
-            }
-        }
-
-        .car-rotate {
-            animation: rotateCar 10s infinite linear;
-        }
-
     </style>
 </head>
 <body>
@@ -199,24 +196,29 @@ $cars = array(
 
 <section class="car-gallery">
     <h2>Our Luxury Fleet</h2>
-    <section class="booking-form">
+
+    <!-- Combined Grid Box -->
+    <section class="grid-box">
+        <!-- Booking Form -->
+        <div class="form-box">
             <h2>Book Your Luxury Ride</h2>
-            <form action="#" method="POST">
+            <form action="#" method="POST" class="booking-form">
                 <input type="text" name="location" placeholder="Pick-up Location" required>
-                <input type="date" name="start-trip" placeholder="Start Trip" required>
-                <input type="date" name="end-trip" placeholder="End Trip" required>
+                <input type="date" name="start-trip" required>
+                <input type="date" name="end-trip" required>
                 <input type="text" name="search" placeholder="Search Cars" required>
                 <input type="submit" value="Search">
             </form>
-        </section><br>
-    <div class="car-cards">
-        
-
-        <!-- Car Image Rotation -->
-        <div class="car-rotate">
-            <img src="https://images.unsplash.com/photo-1606813909023-5e1b2b6f5a3b?auto=format&fit=crop&w=800&q=80" alt="Car Image">
         </div>
 
+        <!-- 3D Car Model Viewer -->
+        <div class="rotating-car-box">
+            <model-viewer src="path_to_your_model/scene.gltf" alt="3D Car Model" camera-controls auto-rotate></model-viewer>
+        </div>
+    </section>
+
+    <!-- Car Cards -->
+    <div class="car-cards">
         <?php foreach ($cars as $car) { ?>
             <div class="car-card">
                 <div class="car-image-wrapper">
