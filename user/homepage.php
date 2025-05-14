@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luxury Car Rental</title>
 
-  <!-- Model Viewer -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -32,7 +30,7 @@
 
     .grid-box {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       background-color: #000;
       padding: 30px;
@@ -74,11 +72,20 @@
       background-color: #e6c200;
     }
 
-    model-viewer {
+    /* Spline Iframe Container */
+    .spline-container {
       width: 100%;
-      height: 250px;
-      background: transparent;
-      border-radius: 10px;
+      height: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .spline-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
     }
 
     .car-cards {
@@ -154,25 +161,19 @@ $cars = array(
     'image' => 'https://images.unsplash.com/photo-1606813909023-5e1b2b6f5a3b?auto=format&fit=crop&w=800&q=80',
     'model' => 'Lamborghini Aventador',
     'price' => 500,
-    'description' => 'Experience the thrill of driving a Lamborghini Aventador, a true supercar with unparalleled performance and style.'
+    'description' => 'Experience the thrill of driving a Lamborghini Aventador.'
   ),
   array(
     'image' => 'https://images.unsplash.com/photo-1615390933845-0c3c1c9e3f1d?auto=format&fit=crop&w=800&q=80',
     'model' => 'Ferrari 488 GTB',
     'price' => 450,
-    'description' => 'Indulge in the exhilarating power and sleek design of the Ferrari 488 GTB, a true Italian masterpiece.'
+    'description' => 'Enjoy the sleek design and speed of Ferrari 488 GTB.'
   ),
   array(
-    'image' => 'https://images.unsplash.com/photo-1589394818370-7c7f4e3f3b3d?auto=format&fit=crop&w=800&q=80',
-    'model' => 'Rolls-Royce Phantom',
-    'price' => 600,
-    'description' => 'Ride in the epitome of luxury with the Rolls-Royce Phantom, a car that combines unparalleled craftsmanship and comfort.'
-  ),
-  array(
-    'image' => 'https://images.unsplash.com/photo-1589394818370-7c7f4e3f3b3d?auto=format&fit=crop&w=800&q=80',
-    'model' => 'Bugatti Chiron',
-    'price' => 700,
-    'description' => 'Experience unmatched speed and luxury with the Bugatti Chiron, a marvel of engineering and design.'
+    'image' => '../image/car3.jpeg',
+    'model' => 'Ford',
+    'price' => 450,
+    'description' => 'Enjoy the sleek design and speed of Ferrari 488 GTB.'
   )
 );
 ?>
@@ -180,7 +181,7 @@ $cars = array(
 <section class="car-gallery">
   <h2>Our Luxury Fleet</h2>
 
-  <!-- Combined Grid Box -->
+  <!-- Booking Form + 3D Viewer -->
   <section class="grid-box">
     <!-- Booking Form -->
     <div class="form-box">
@@ -194,17 +195,9 @@ $cars = array(
       </form>
     </div>
 
-    <!-- 3D Car Viewer -->
-    <div class="model-box">
-      <model-viewer
-        src="scene.glb"
-        alt="A 3D car"
-        auto-rotate
-        camera-controls
-        disable-zoom
-        exposure="1"
-        background-color="#000000">
-      </model-viewer>
+    <!-- 3D Spline Animation -->
+    <div class="spline-container">
+      <iframe src="https://my.spline.design/carastonmartinanimation-VgXtcpYr8Wz8NIhudSQKHyy2/" allowfullscreen></iframe>
     </div>
   </section>
 
