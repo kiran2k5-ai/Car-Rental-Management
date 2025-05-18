@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
     $stmt->bind_param("ssi", $name, $email, $id);
     $stmt->execute();
     $stmt->close();
+    //this is kiran
 }
 
 // Handle delete
