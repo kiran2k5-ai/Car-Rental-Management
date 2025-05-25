@@ -42,3 +42,25 @@ INSERT INTO cars (model, brand, image, rent_per_day, status) VALUES
 ('Hyundai', 'Hyundai', 'Screenshot_2025_01_29_211744.png', 30000.00, 'available'),
 ('Nano', 'Tata', 'Screenshot_2025_04_27_235729.png', 10000.00, 'available'),
 ('Sumo', 'Tata', 'Screenshot_2025_02_10_203814.png', 5000.00, 'available');
+
+
+
+-- MESSAGES / CONTACT (Optional)
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    subject VARCHAR(150),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- OFFERS TABLE (Optional)
+CREATE TABLE offers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    discount_percentage DECIMAL(5,2),
+    valid_until DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
