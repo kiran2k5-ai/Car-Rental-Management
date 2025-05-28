@@ -10,12 +10,14 @@ $cars = $conn->query("SELECT id, model FROM cars");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $car_id = (int)$_POST['car_id'];
     $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
     $discount = (float)$_POST['discount'];
     $valid_till = $_POST['valid_till'];
 
     if ($car_id && $title && $discount && $valid_till) {
-        $stmt = $conn->prepare("INSERT INTO offers (car_id, title, discount_percent, valid_till) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isds", $car_id, $title, $discount, $valid_till);
+        $stmt = $conn->prepare("INSERT INTO offers (title, description, discount_percentage, valid_until, car_id) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssdsi", $title, $description, $discount, $valid_till, $car_id);
+
         if ($stmt->execute()) {
             $message = "✅ Offer added successfully!";
         } else {
@@ -50,6 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label for="title" class="form-label">Offer Title</label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="e.g., Summer Discount" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" name="description" id="description" class="form-control" placeholder="e.g., Save more this summer" required>
             </div>
 
             <div class="mb-3">
